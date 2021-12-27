@@ -1,0 +1,17 @@
+{
+  "name": "temel-axios-islemleri-giris",
+  "version": "1.0.0",
+  "description": "temel axios işlemleri",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Buket Soyhan",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "follow-redirects": "^1.14.6",
+    "gulp-imagemin": "^7.1.0"
+  }
+}
