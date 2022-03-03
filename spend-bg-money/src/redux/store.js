@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import spendMoneySlice from "./spendMoneySlice"
+import spendMoneyReducer from "./spendMoneySlice"
 
 export const store = configureStore({
     reducer: {
-        spendMoney: spendMoneySlice
+        product: spendMoneyReducer
     }
 })
