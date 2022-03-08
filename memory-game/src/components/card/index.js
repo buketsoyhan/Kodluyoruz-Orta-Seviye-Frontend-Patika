@@ -18,62 +18,81 @@ function Card() {
   const [score, setScore] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const shuffleCards = () => {
     const shuffleCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
     setCards(shuffleCards);
+    setChoiceOne(null);
+    setChoiceTwo(null);
     setTurns(0);
   };
-  
+
   const handleChoice = (card) => {
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
-  useEffect(() => {
-    if (choiceOne && choiceTwo) {
-      if (choiceOne.src === choiceTwo.src) {
-        setCards(prevCards => {
-          return prevCards.map(card => {
-            if (card.src === choiceOne.src) {
-              return {...card, matched: true };
-            } else {
-              return card;
-            }
+  useEffect(
+    (card) => {
+      if (choiceOne && choiceTwo) {
+        setDisabled(true);
+
+        if (choiceOne.src === choiceTwo.src) {
+          setCards((prevCards) => {
+            return prevCards.map((card) => {
+              if (card.src === choiceOne.src) {
+                setScore(score + 50);
+                return { ...card, matched: true };
+              } else {
+                return card;
+              }
+            });
           });
-        });
-        resetTurn();
-      } else {
-        setTimeout(()=> resetTurn(), 1000)
+          resetTurn();
+        } else {
+          setTimeout(() => resetTurn(), 1000);
+        }
       }
-    }
-  }, [choiceOne, choiceTwo]);
+    },
+    [choiceOne, choiceTwo]
+  );
 
   console.log("card", cards);
 
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
-    setTurns(prevTurns => prevTurns + 1);
+    setTurns((prevTurns) => prevTurns + 1);
+    setDisabled(false);
+    setScore(score - 10);
   };
+
+  useEffect(() => {
+    shuffleCards();
+  }, []);
+
   return (
     <div>
       <h1 style={{ color: "white" }}> Memory Game </h1>
       <button onClick={shuffleCards}>New Game</button>
-
+      <h2 style={{ color: "white", marginTop: 20, marginBottom: 10 }}>
+        Score: {score}
+      </h2>
       <div className="card-grid">
-        {cards.map(card => (
-          <SingleCard 
-          key={card.id} 
-          card={card} 
-          handleChoice={handleChoice}
-          flipped={card === choiceOne || card === choiceTwo || card.matched } 
+        {cards.map((card) => (
+          <SingleCard
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
+            disabled={disabled}
           />
         ))}
       </div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
-
 export default Card;
