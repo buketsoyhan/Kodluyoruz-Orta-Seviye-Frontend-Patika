@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import User from "./User";
 export default class Users extends Component {
   render() {
-    const { users } = this.props;
+    const { users, deleteUser } = this.props;
     return (
       <div>
         {users.map((user) => {
           return (
             <User
               key={user.id}
+              id={user.id}
               name={user.name}
               salary={user.salary}
               department={user.department}
+              deleteUser={deleteUser}
             />
           );
         })}

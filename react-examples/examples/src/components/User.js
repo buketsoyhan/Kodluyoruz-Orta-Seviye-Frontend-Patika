@@ -4,11 +4,15 @@ export default class User extends Component {
   state = {
     isVisible: false,
   };
-  onClickEvent=(e)=>{
-    this.setState ( {
-      isVisible : !this.state.isVisible
-    })
-  }
+  onClickEvent = (e) => {
+    this.setState({
+      isVisible: !this.state.isVisible,
+    });
+  };
+  onDeleteUser = (e) => {
+    const { id, deleteUser } = this.props;
+    deleteUser(id);
+  };
 
   render() {
     //DESTRUCTING
@@ -18,9 +22,15 @@ export default class User extends Component {
       <div className="col-md-8 mb-4">
         <div className="card">
           <div className="card-header d-flex justify-content-between">
-            <h4 className="d-inline" onClick={this.onClickEvent} >{name}</h4>
+            <h4 className="d-inline" onClick={this.onClickEvent}>
+              {name}
+            </h4>
 
-            <i className="far fa-trash-alt" style={{ cursor: "pointer" }}></i>
+            <i
+              onClick={this.onDeleteUser}
+              className="far fa-trash-alt"
+              style={{ cursor: "pointer" }}
+            ></i>
           </div>
           {isVisible ? (
             <div className="card-body">
