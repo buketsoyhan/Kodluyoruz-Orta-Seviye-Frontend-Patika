@@ -10,8 +10,7 @@ export default class User extends Component {
     });
   };
   onDeleteUser = (e) => {
-    const { id, deleteUser } = this.props;
-    deleteUser(id);
+    const { id } = this.props;
   };
 
   render() {
