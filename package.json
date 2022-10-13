@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "npx": "^10.2.2"
+    "npx": "^10.2.2",
+    "react-pose": "^4.0.10",
+    "uniqid": "^5.4.0"
   }
 }
