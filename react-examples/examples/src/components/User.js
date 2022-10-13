@@ -14,6 +14,9 @@ export default class User extends Component {
     const { id } = this.props;
     dispatch({ type: "DELETE_USER", payload: id });
   };
+  componentWillUnmount() {
+    console.log("Component Will Unmount");
+  }
 
   render() {
     //DESTRUCTING
@@ -26,7 +29,14 @@ export default class User extends Component {
 
           return (
             <div className="col-md-8 mb-4">
-              <div className="card" style={isVisible ?{backgroundColor:"#62848d", color:"white"}: null}>
+              <div
+                className="card"
+                style={
+                  isVisible
+                    ? { backgroundColor: "#62848d", color: "white" }
+                    : null
+                }
+              >
                 <div className="card-header d-flex justify-content-between">
                   <h4 className="d-inline" onClick={this.onClickEvent}>
                     {name}
