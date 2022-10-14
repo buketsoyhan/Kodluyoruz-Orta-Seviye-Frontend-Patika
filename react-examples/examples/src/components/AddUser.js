@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import posed from "react-pose";
 import UserConsumer from "../context";
-var uniqid = require("uniqid");
+import axios from "axios";
 const Animation = posed.div({
   visible: {
     opacity: 1,
@@ -34,16 +34,18 @@ export default class AddUser extends Component {
       [e.target.name]: e.target.value,
     });
   };
-  addUser = (dispatch,e) => {
+  addUser = async (dispatch, e) => {
     e.preventDefault();
     const { name, salary, department } = this.state;
     const newUser = {
-      id: uniqid(),
       name,
       salary,
       department,
     };
-    dispatch({ type: "ADD_USER", payload: newUser });
+
+    const response = await axios.post("http://localhost:3000/users", newUser);
+
+    dispatch({ type: "ADD_USER", payload: response.data });
   };
 
   render() {
@@ -52,7 +54,7 @@ export default class AddUser extends Component {
     return (
       <UserConsumer>
         {(value) => {
-          const {dispatch} = value;
+          const { dispatch } = value;
           return (
             <div className="col-md-8 mb-4">
               <button

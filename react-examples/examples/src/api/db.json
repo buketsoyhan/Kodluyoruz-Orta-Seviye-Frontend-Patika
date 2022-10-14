@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Buket Soyhan",
+      "salary": "15200",
+      "department": "IT"
+    },
+    {
+      "id": 3,
+      "name": "Aslı Aslan",
+      "salary": "19200",
+      "department": "Development"
+    },
+    {
+      "name": "Kemalettin Tuğcu",
+      "salary": "50000",
+      "department": "Management",
+      "id": 4
+    },
+    {
+      "name": "Yahya Kemal",
+      "salary": "5000",
+      "department": "Education",
+      "id": 5
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserConsumer from "../context";
+import axios from "axios"
 
 export default class User extends Component {
   state = {
@@ -10,8 +11,10 @@ export default class User extends Component {
       isVisible: !this.state.isVisible,
     });
   };
-  onDeleteUser = (dispatch, e) => {
+  onDeleteUser = async(dispatch, e) => {
     const { id } = this.props;
+    await axios.delete(`http://localhost:3000/users/${id}`)
+
     dispatch({ type: "DELETE_USER", payload: id });
   };
   componentWillUnmount() {
