@@ -3,15 +3,23 @@ import Navbar from "./components/Navbar";
 import Users from "./components/Users";
 import "./App.css";
 import AddUser from "./components/AddUser";
-export default class App extends Component {
+import NotFound from "./components/NotFound";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+class App extends Component {
   render() {
     return (
-      <div className="container">
-        <Navbar title="User App" />
-        <hr />
-        <AddUser />
-        <Users />
-      </div>
+      <Router>
+        <div className="container">
+          <Navbar title="User App" />
+          <hr />
+          <Routes>
+            <Route exact path="/" component={Users} />
+            <Route exact path="/add" component={AddUser} />
+            <Route path="*" component={NotFound} />
+          </Routes>
+        </div>
+      </Router>
     );
   }
 }
+export default App;
