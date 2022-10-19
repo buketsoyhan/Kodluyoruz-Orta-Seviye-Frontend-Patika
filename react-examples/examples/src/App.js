@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "./layout/Navbar";
 import Users from "./components/Users";
 import "./App.css";
-import AddUser from "./components/AddUser";
-import NotFound from "./components/NotFound";
+import AddUser from "./forms/AddUser";
+import NotFound from "./pages/NotFound";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Contribute from "./pages/Contribute";
+import UpdateUser from "./forms/UpdateUser";
 class App extends Component {
   render() {
     return (
@@ -13,9 +15,11 @@ class App extends Component {
           <Navbar title="User App" />
           <hr />
           <Routes>
-            <Route exact path="/" component={Users} />
-            <Route exact path="/add" component={AddUser} />
-            <Route path="*" component={NotFound} />
+            <Route path="/" element={<Users />} />
+            <Route path="/add" element={<AddUser />} />
+            <Route path="/edit/:id" element={<UpdateUser />} />
+            <Route path="/github" element={<Contribute />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>

@@ -13,16 +13,16 @@
       "department": "Development"
     },
     {
-      "name": "Kemalettin Tuğcu",
-      "salary": "50000",
-      "department": "Management",
-      "id": 4
-    },
-    {
       "name": "Yahya Kemal",
       "salary": "5000",
       "department": "Education",
       "id": 5
+    },
+    {
+      "name": "Deniz Özkan",
+      "salary": "50000",
+      "department": "Space",
+      "id": 6
     }
   ]
 }
