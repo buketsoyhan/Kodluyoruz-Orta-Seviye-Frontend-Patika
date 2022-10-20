@@ -10,17 +10,17 @@ function Navbar({ title }) {
       </a>
 
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item active mr-2">
+        <li className="nav-item active mr-3">
           <Link to="/" className="nav-link">
             Home
           </Link>
         </li>
-        <li className="nav-item active mx-2">
+        <li className="nav-item active mr-3">
           <Link to="/add" className="nav-link">
             Add User
           </Link>
         </li>
-        <li className="nav-item active mx-2">
+        <li className="nav-item active mr-3">
           <Link to="/github" className="nav-link">
             Project Files
           </Link>

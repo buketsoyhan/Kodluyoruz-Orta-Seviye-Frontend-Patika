@@ -23,6 +23,30 @@
       "salary": "50000",
       "department": "Space",
       "id": 6
+    },
+    {
+      "name": "Serdar Kıvanç",
+      "salary": "11000",
+      "department": "IK",
+      "id": 7
+    },
+    {
+      "name": "Mustafa Murat",
+      "salary": "80000",
+      "department": "Udemy",
+      "id": 8
+    },
+    {
+      "name": "Ceren Ece",
+      "salary": "20000",
+      "department": "Engineering",
+      "id": 9
+    },
+    {
+      "name": "Derya Deniz",
+      "salary": "7000",
+      "department": "Ik",
+      "id": 10
     }
   ]
 }

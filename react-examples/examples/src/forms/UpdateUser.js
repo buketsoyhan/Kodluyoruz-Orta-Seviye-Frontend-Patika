@@ -7,18 +7,63 @@ export default class UpdateUser extends Component {
     name: "",
     department: "",
     salary: "",
+    error: false,
   };
   changeInput = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
+  componentDidMount = async () => {
+    //const {id} = this.props.match.params
+    // console.log("iddd", id);
+    console.log("çekçekidçek", this.props.match);
+    const response = await axios.get(`http://localhost:3000/users/`);
+    const found = response.data.find((element) => {
+      return element.id === 1;
+    });
+    console.log(found);
+    const { name, salary, department } = found;
+    this.setState({
+      name,
+      salary,
+      department,
+    });
+  };
+  validateForm = () => {
+    const { name, salary, department } = this.state;
+    if (name === "" || salary === "" || department === "") return false;
+    else return true;
+  };
   updateUser = async (dispatch, e) => {
     e.preventDefault();
+    const { name, salary, department } = this.state;
+    const { id } = this.props.match.params;
+    const updatedUser = {
+      name,
+      salary,
+      department,
+    };
+
+    if (!this.validateForm()) {
+      this.setState({
+        error: true,
+      });
+      return;
+    }
+
+    const response = await axios.put(
+      `http://localhost:3000/users/${id}`,
+      updatedUser
+    );
+
+    dispatch({ type: "UPDATE_USER", payload: response.data });
+
+    this.props.history.push("/");
   };
 
   render() {
-    const { name, salary, department } = this.state;
+    const { name, salary, department, error } = this.state;
 
     return (
       <UserConsumer>
@@ -31,6 +76,11 @@ export default class UpdateUser extends Component {
                   <h4>Update User Form</h4>
                 </div>
                 <div className="card-body">
+                  {error ? (
+                    <div className="alert alert-danger">
+                      Lütfen bilgilerinizi kontrol edin.
+                    </div>
+                  ) : null}
                   <form onSubmit={this.updateUser.bind(this, dispatch)}>
                     <div className="form-group">
                       <label htmlFor="name">Name</label>
@@ -70,7 +120,10 @@ export default class UpdateUser extends Component {
                         onChange={this.changeInput}
                       />
                     </div>
-                    <button className="btn btn-success w-100" type="submit">
+                    <button
+                      className="btn btn-success w-100 mt-3"
+                      type="submit"
+                    >
                       Update User
                     </button>
                   </form>

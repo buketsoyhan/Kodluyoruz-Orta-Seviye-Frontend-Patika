@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import posed from "react-pose";
 import UserConsumer from "../context";
 import axios from "axios";
+import { useNavigate, Redirect, Route } from "react-router-dom";
 const Animation = posed.div({
   visible: {
     opacity: 1,
@@ -23,11 +24,17 @@ export default class AddUser extends Component {
     name: "",
     department: "",
     salary: "",
+    error: false,
   };
   changeVisibility = (e) => {
     this.setState({
       visible: !this.state.visible,
     });
+  };
+  validateForm = () => {
+    const { name, salary, department } = this.state;
+    if (name === "" || salary === "" || department === "") return false;
+    else return true;
   };
   changeInput = (e) => {
     this.setState({
@@ -43,13 +50,24 @@ export default class AddUser extends Component {
       department,
     };
 
+    if(!this.validateForm()){
+      this.setState({
+        error:true
+      })
+      return;
+    }
+
     const response = await axios.post("http://localhost:3000/users", newUser);
 
     dispatch({ type: "ADD_USER", payload: response.data });
+
+    //Redirect
+    let navigate = useNavigate();
+    navigate("/");
   };
 
   render() {
-    const { visible, name, salary, department } = this.state;
+    const { visible, name, salary, department,error } = this.state;
 
     return (
       <UserConsumer>
@@ -69,6 +87,11 @@ export default class AddUser extends Component {
                     <h4>Add User Form</h4>
                   </div>
                   <div className="card-body">
+                    {
+                      error ?
+                      <div className="alert alert-danger">Lütfen bilgilerinizi kontrol edin.</div>
+                      : null
+                    }
                     <form onSubmit={this.addUser.bind(this, dispatch)}>
                       <div className="form-group">
                         <label htmlFor="name">Name</label>
@@ -108,7 +131,10 @@ export default class AddUser extends Component {
                           onChange={this.changeInput}
                         />
                       </div>
-                      <button className="btn btn-success w-100" type="submit">
+                      <button
+                        className="btn btn-success w-100 mt-3"
+                        type="submit"
+                      >
                         Add User
                       </button>
                     </form>
