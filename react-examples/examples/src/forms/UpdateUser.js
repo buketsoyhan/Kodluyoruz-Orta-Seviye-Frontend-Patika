@@ -17,7 +17,11 @@ export default class UpdateUser extends Component {
   componentDidMount = async () => {
     //const {id} = this.props.match.params
     // console.log("iddd", id);
-    console.log("çekçekidçek", this.props.match);
+    const { id } = this.props;
+
+    console.log("çekçekidçek", id);
+    console.log("çekçekidçek22", {id});
+
     const response = await axios.get(`http://localhost:3000/users/`);
     const found = response.data.find((element) => {
       return element.id === 1;
@@ -38,7 +42,8 @@ export default class UpdateUser extends Component {
   updateUser = async (dispatch, e) => {
     e.preventDefault();
     const { name, salary, department } = this.state;
-    const { id } = this.props.match.params;
+    const { id } = this.props;
+
     const updatedUser = {
       name,
       salary,
@@ -51,7 +56,7 @@ export default class UpdateUser extends Component {
       });
       return;
     }
-
+    await axios.delete(`http://localhost:3000/users/${id}`);
     const response = await axios.put(
       `http://localhost:3000/users/${id}`,
       updatedUser

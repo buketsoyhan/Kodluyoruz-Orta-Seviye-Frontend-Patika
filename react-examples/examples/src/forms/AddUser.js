@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import posed from "react-pose";
 import UserConsumer from "../context";
 import axios from "axios";
-import { useNavigate, Redirect, Route } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 const Animation = posed.div({
   visible: {
     opacity: 1,
