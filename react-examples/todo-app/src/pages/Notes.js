@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
+import CloseButton from "react-bootstrap/CloseButton";
 
 export default class Notes extends Component {
   state = {
@@ -13,9 +14,44 @@ export default class Notes extends Component {
     });
   };
 
-  changeStatus = (e) => {
-    
+  changeStatus = async (e) => {
+    const tempId = e.currentTarget.id;
+    const body = e.target.value;
+    axios({
+      method: "put",
+      url: "http://localhost:3000/todos/" + tempId,
+      data: {
+        id: tempId,
+        body: body,
+        isDone: true,
+      },
+    });
   };
+
+  rechangeStatus = async (e) => {
+    const tempId = e.currentTarget.id;
+    const body = e.target.value;
+    axios({
+      method: "put",
+      url: "http://localhost:3000/todos/" + tempId,
+      data: {
+        id: tempId,
+        body: body,
+        isDone: false,
+      },
+    });
+  };
+  deleteData = async (e) => {
+    const tempId = e.currentTarget.id;
+
+    axios.delete(`http://localhost:3000/todos/${tempId}`).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      const todos = this.state.todos.filter((item) => item.tempId !== tempId);
+      this.setState({ todos });
+    });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({
@@ -33,36 +69,67 @@ export default class Notes extends Component {
             <h2>Incompleted Todos</h2>
             {this.state.todos.map((todo) => (
               <ul key={todo.id} className="list-group">
-                {!todo.isDone ? (
+                {!todo.isDone && todo.isDone === false ? (
                   <li className="list-group-item d-flex justify-content-between align-items-center">
                     {todo.body}
-                    <input onClick={this.changeStatus} type="checkbox" ></input>
+                    <div>
+                      <input
+                        id={todo.id}
+                        value={todo.body}
+                        onClick={this.changeStatus}
+                        type="checkbox"
+                      ></input>
+                      <CloseButton
+                        id={todo.id}
+                        onClick={this.deleteData}
+                        className="ml-2"
+                        variant="black"
+                      >
+                        x
+                      </CloseButton>
+                    </div>
                   </li>
                 ) : null}
               </ul>
             ))}
           </div>
         ) : (
-          <div>There is nothing todo</div>
+          <div></div>
         )}
         <div>
-        {this.state.todos.length > 0 ? (
-          <div>
-            <h2>Completed Todos</h2>
-            {this.state.todos.map((todo) => (
-              <ul key={todo.id} className="list-group">
-                {todo.isDone ? (
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    {todo.body}
-                    <input onClick={this.changeStatus} type="checkbox" checked={todo.isDone} ></input>
-                  </li>
-                ) : null}
-              </ul>
-            ))}
-          </div>
-        ) : (
-          <div>There is nothing todo</div>
-        )}
+          {this.state.todos.length > 0 ? (
+            <div>
+              <h2>Completed Todos</h2>
+              {this.state.todos.map((todo) => (
+                <ul key={todo.id} className="list-group">
+                  {todo.isDone && todo.isDone === true ? (
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      {todo.body}
+                      <div>
+                        <input
+                          id={todo.id}
+                          onClick={this.rechangeStatus}
+                          type="checkbox"
+                          value={todo.body}
+                          defaultChecked={true}
+                        ></input>
+                        <CloseButton
+                          id={todo.id}
+                          onClick={this.deleteData}
+                          className="ml-2"
+                          variant="black"
+                        >
+                          x
+                        </CloseButton>
+                      </div>
+                    </li>
+                  ) : null}
+                </ul>
+              ))}
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     );

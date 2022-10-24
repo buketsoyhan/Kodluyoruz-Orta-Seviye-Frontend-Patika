@@ -7,26 +7,18 @@
     },
     {
       "id": 2,
-      "isDone": true,
-      "body": "Go to GYM"
+      "body": "Go to GYM",
+      "isDone": false
     },
     {
       "id": 3,
-      "isDone": false,
-      "body": "Read a magazine"
+      "body": "hiç bir şey eksik",
+      "isDone": false
     },
     {
+      "id": 5,
       "body": "yeni todo",
-      "id": 5
-    },
-    {
-      "body": "asdas",
-      "id": 6
-    },
-    {
-      "body": "yap",
-      "isDone": false,
-      "id": 7
+      "isDone": false
     },
     {
       "body": "hello",
@@ -34,19 +26,19 @@
       "id": 8
     },
     {
-      "body": "ı",
+      "body": "newww",
       "isDone": true,
       "id": 14
     },
     {
+      "id": 15,
       "body": "fdfsd",
-      "isDone": false,
-      "id": 15
+      "isDone": true
     },
     {
-      "body": "yeni",
-      "isDone": false,
-      "id": 16
+      "id": 17,
+      "body": "deneeemeee",
+      "isDone": false
     }
   ]
 }
