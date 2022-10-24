@@ -1,19 +1,52 @@
 {
-    "todos":[
-        {
-            "id":1,
-            "isDone": false,
-            "body": "Read a book"
-        },
-        {
-            "id":2,
-            "isDone": false,
-            "body": "Go to GYM"
-        },
-        {
-            "id":3,
-            "isDone": false,
-            "body": "Read a magazine"
-        }
-    ]
+  "todos": [
+    {
+      "id": 1,
+      "isDone": false,
+      "body": "Read a book"
+    },
+    {
+      "id": 2,
+      "isDone": true,
+      "body": "Go to GYM"
+    },
+    {
+      "id": 3,
+      "isDone": false,
+      "body": "Read a magazine"
+    },
+    {
+      "body": "yeni todo",
+      "id": 5
+    },
+    {
+      "body": "asdas",
+      "id": 6
+    },
+    {
+      "body": "yap",
+      "isDone": false,
+      "id": 7
+    },
+    {
+      "body": "hello",
+      "isDone": false,
+      "id": 8
+    },
+    {
+      "body": "ı",
+      "isDone": true,
+      "id": 14
+    },
+    {
+      "body": "fdfsd",
+      "isDone": false,
+      "id": 15
+    },
+    {
+      "body": "yeni",
+      "isDone": false,
+      "id": 16
+    }
+  ]
 }

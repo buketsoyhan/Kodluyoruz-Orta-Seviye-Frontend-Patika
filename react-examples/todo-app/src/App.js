@@ -1,19 +1,17 @@
 import Header from "./components/Header";
-import React, {Component} from "react"
-import axios from "axios";
-
+import React, { Component } from "react";
+import Notes from "./pages/Notes";
+import AddUser from "./components/AddUser";
+import Dashboard from "./components/Dashboard";
 class App extends Component {
-  componentDidMount=async()=> { 
-    const response= await axios.get(`http://localhost:3000/todos`)
-    console.log(response.data);
-   }
-  render(){
+  render() {
     return (
       <div>
-        <Header/>
-        <div  className="container">
+        <Header />
+        <AddUser/>
+        <Notes />
 
-        </div>
+        {/* <Dashboard/> */}
       </div>
     );
   }
