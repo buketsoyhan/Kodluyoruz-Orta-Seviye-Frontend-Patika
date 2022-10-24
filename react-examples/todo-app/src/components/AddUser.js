@@ -13,7 +13,7 @@ function AddUser() {
       body: "",
       isDone: false,
     });
-    if (response) alert("data submit succesfully");
+    window.location.reload()
   };
   return (
     <div className="container w-50">
@@ -36,15 +36,6 @@ function AddUser() {
           </button>
         </div>
       </div>
-
-      {/* <form>
-        <div className="">
-          <input type="text" className="form-control" placeholder="Add a todo"/>
-          <div className="input-group-append">
-            <button onClick={this.handleSubmit} className="btn btn-outline-secondary" type="button">Add</button>
-          </div>
-        </div>
-        </form> */}
     </div>
   );
 }

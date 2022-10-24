@@ -2,8 +2,8 @@
   "todos": [
     {
       "id": 1,
-      "isDone": false,
-      "body": "Read a book"
+      "body": "Read a book",
+      "isDone": false
     },
     {
       "id": 2,
@@ -21,9 +21,9 @@
       "isDone": false
     },
     {
+      "id": 8,
       "body": "hello",
-      "isDone": false,
-      "id": 8
+      "isDone": true
     },
     {
       "body": "newww",
@@ -39,6 +39,21 @@
       "id": 17,
       "body": "deneeemeee",
       "isDone": false
+    },
+    {
+      "id": 18,
+      "body": "watch tv series",
+      "isDone": true
+    },
+    {
+      "body": "watch yt",
+      "isDone": false,
+      "id": 19
+    },
+    {
+      "body": "read Simyacı",
+      "isDone": false,
+      "id": 20
     }
   ]
 }

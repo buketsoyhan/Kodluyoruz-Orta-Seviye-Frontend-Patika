@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import CloseButton from "react-bootstrap/CloseButton";
 
@@ -7,6 +7,7 @@ export default class Notes extends Component {
     todos: [],
     data: "",
   };
+  
   componentDidMount = async () => {
     const response = await axios.get(`http://localhost:3000/todos`);
     this.setState({
@@ -26,6 +27,7 @@ export default class Notes extends Component {
         isDone: true,
       },
     });
+    window.location.reload()
   };
 
   rechangeStatus = async (e) => {
@@ -40,6 +42,7 @@ export default class Notes extends Component {
         isDone: false,
       },
     });
+    window.location.reload()
   };
   deleteData = async (e) => {
     const tempId = e.currentTarget.id;
@@ -50,6 +53,7 @@ export default class Notes extends Component {
       const todos = this.state.todos.filter((item) => item.tempId !== tempId);
       this.setState({ todos });
     });
+    window.location.reload()
   };
 
   handleSubmit = (e) => {
@@ -115,7 +119,7 @@ export default class Notes extends Component {
                         ></input>
                         <CloseButton
                           id={todo.id}
-                          onClick={this.deleteData}
+                          onClick={this.deleteData }
                           className="ml-2"
                           variant="black"
                         >
