@@ -13,13 +13,13 @@ function AddUser() {
       body: "",
       isDone: false,
     });
-    window.location.reload()
+    console.log(response.data);
+    window.location.reload();
   };
   return (
     <div className="container w-50">
       <div className="row ">
         <div className="col-md-7 d-flex justify-content-between">
-
           <div className="mb-3">
             <input
               type="text"

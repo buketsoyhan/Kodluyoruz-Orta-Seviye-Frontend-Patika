@@ -13,7 +13,7 @@
     {
       "id": 3,
       "body": "hiç bir şey eksik",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": 5,
@@ -21,29 +21,14 @@
       "isDone": false
     },
     {
-      "id": 8,
-      "body": "hello",
-      "isDone": true
-    },
-    {
       "body": "newww",
       "isDone": true,
       "id": 14
     },
     {
-      "id": 15,
-      "body": "fdfsd",
-      "isDone": true
-    },
-    {
-      "id": 17,
-      "body": "deneeemeee",
-      "isDone": false
-    },
-    {
       "id": 18,
       "body": "watch tv series",
-      "isDone": true
+      "isDone": false
     },
     {
       "body": "watch yt",
@@ -51,9 +36,24 @@
       "id": 19
     },
     {
+      "id": 20,
       "body": "read Simyacı",
+      "isDone": true
+    },
+    {
+      "body": "ıncomplete todo",
       "isDone": false,
-      "id": 20
+      "id": 21
+    },
+    {
+      "id": 22,
+      "body": "completed todo",
+      "isDone": true
+    },
+    {
+      "id": 23,
+      "body": "bişey",
+      "isDone": true
     }
   ]
 }
