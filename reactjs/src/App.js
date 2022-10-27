@@ -1,9 +1,10 @@
 import "./App.css";
 import Todo from "./components/Todo/Todo";
+import Index from "./components/Axios/Index";
 
 function App() {
   return <div> 
-    <Todo/>
+    <Index/>
   </div>;
 }
 
