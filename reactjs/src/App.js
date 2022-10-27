@@ -1,12 +1,9 @@
 import "./App.css";
-import Counter from "./components/Counter";
-import InputExample from "./components/InputExample";
-import State from "./components/State";
+import Todo from "./components/Todo/Todo";
+
 function App() {
-  return <div>
-    {/* <State/> */}
-    {/* <Counter/> */}
-    <InputExample/>
+  return <div> 
+    <Todo/>
   </div>;
 }
 
